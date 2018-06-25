@@ -1,0 +1,194 @@
+{
+    "blogs": [
+    {
+        "id": 1,
+        "date":1525966633715,
+        "title":"fetch()",
+        "author":"Antoan Andonov",
+        "content":"The fetch() method used to fetch a resource.",
+        "tags":["fetch", "Mozilla"],
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch",
+        "state":"active"
+    },
+    {
+        "id": 2,
+        "date":1525966855757,
+        "title":"Headers",
+        "author":"Antoan Andonov",
+        "content":"Represents response/request headers, allowing you to query them and take different actions depending on the results.",
+        "tags":["header", "second"],
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Headers",
+        "state":"active"
+    },
+    {
+        "id": 3,
+        "date":1525966670318,
+        "title":"Request",
+        "author":"Antoan Andonov",
+        "content":"Represents a resource request.",
+        "tags":["request"],
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Request",
+        "state":"active"
+    },
+    {
+        "id": 4,
+        "date":1525076459178,
+        "title":"Response",
+        "author":"Antoan Andonov",
+        "content":"Represents the response to a request.",
+        "tags":["response"],
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Response",
+        "state":"active"
+    },
+    {
+        "id": 5,
+        "date":1525076459178,
+        "title":"Philosophy",
+        "author":"Antoan Andonov",
+        "content":"This guide’s purpose is to explain the mental model to have when using React Router. We call it “Dynamic Routing”, which is quite different from the “Static Routing” you’re probably more familiar with.",
+        "tags":["Philosophy"],
+        "url": "",
+        "state":"active"
+    },
+    {
+        "id": 6,
+        "date":1525966837310,
+        "title":"Static Routing",
+        "author":"Antoan Andonov",
+        "content":"If you’ve used Rails, Express, Ember, Angular etc. you’ve used static routing. In these frameworks, you declare your routes as part of your app’s initialization before any rendering takes place. React Router pre-v4 was also static (mostly).",
+        "tags":["Static Routing"],
+        "url": "",
+        "state":"active"
+    },
+    {
+        "id": 7,
+        "date":1525966778603,
+        "title":"Backstory",
+        "author":"Antoan Andonov",
+        "content":"To be candid, we were pretty frustrated with the direction we’d taken React Router by v2. We (Michael and Ryan) felt limited by the API, recognized we were reimplementing parts of React (lifecycles, and more), and it just didn’t match the mental model React has given us for composing UI.We were walking through the hallway of a hotel just before a workshop discussing what to do about it. We asked each other: “What would it look like if we built the router using the patterns we teach in our workshops?”It was only a matter of hours into development that we had a proof-of-concept that we knew was the future we wanted for routing. We ended up with API that wasn’t “outside” of React, an API that composed, or naturally fell into place, with the rest of React. We think you’ll love it.",
+        "tags":["Backstory"],
+        "url": "",
+        "state":"active"
+    },
+    {
+        "id": 8,
+        "date":1525966799407,
+        "title":"Dynamic Routing",
+        "author":"Antoan Andonov",
+        "content":"When we say dynamic routing, we mean routing that takes place as your app is rendering, not in a configuration or convention outside of a running app. That means almost everything is a component in React Router.",
+        "tags":["Dynamic Routing"],
+        "url": "",
+        "state":"active"
+    },
+    {
+        "id": 9,
+        "date":1525966789874,
+        "title":"Nested Routes",
+        "author":"Antoan Andonov",
+        "content":"Lots of routers have some concept of “nested routes”. If you’ve used versions of React Router previous to v4, you’ll know it did too! When you move from a static route configuration to dynamic, rendered routes, how do you “nest routes”? Well, how do you nest a div?",
+        "tags":["Nested Routes"],
+        "url": "",
+        "state":"active"
+    },
+    {
+        "id": 10,
+        "date":1525966810944,
+        "title":"Responsive Routes",
+        "author":"Antoan Andonov",
+        "content":"Consider a user navigates to /invoices. Your app is adaptive to different screen sizes, they have a narrow viewport, and so you only show them the list of invoices and a link to the invoice dashboard. They can navigate deeper from there.",
+        "tags":["Responsive Routes"],
+        "url": "",
+        "state":"active"
+    },
+    {
+        "id": 11,
+        "date":1525966736325,
+        "title":"Deep Linking",
+        "author":"Antoan Andonov",
+        "content":"Before you can use <DeepLinking/> you need to set it up in your native app configuration. Please refer to the React Native Docs.",
+        "tags":["Deep Linking"],
+        "url": "",
+        "state":"inactive"
+    },
+    {
+        "id": 12,
+        "date":1525966755665,
+        "title":"Animation",
+        "author":"Antoan Andonov",
+        "content":"This guide is a little sparse right now, but should provide enough insight to help you implement some great animations if you’re already comfortable with animations generally. Because React Router mostly is just components, all the typical animation strategies apply. The only difference is the things that trigger an animation. This guide attempts to spark some inspiration rather than provide copy/paste code.",
+        "tags":["Animation"],
+        "url": "",
+        "state":"inactive"
+    },
+    {
+        "id": 13,
+        "date":1525966747757,
+        "title":"Element Transitions",
+        "author":"Antoan Andonov",
+        "content":"As the user navigates, some elements should animate while remaining on the page. The Route children prop is perfect for these situations.Consider this app without the router. When the <TouchableHighlight/> is pressed the sidebar’s animation will toggle.",
+        "tags":["Element Transitions"],
+        "url": "",
+        "state":"inactive"
+    },
+    {
+        "id": 14,
+        "date":1525966717839,
+        "title":"Redux Integration",
+        "author":"Antoan Andonov",
+        "content":"Redux is an important part of the React ecosystem. We want to make the integration of React Router and Redux as seamless as possible for people wanting to use both.",
+        "tags":["Redux Integration"],
+        "url": "",
+        "state":"inactive"
+    },
+    {
+        "id": 15,
+        "date":1525966707887,
+        "title":"Deep integration",
+        "author":"Antoan Andonov",
+        "content":"Some folks want to: synchronize the routing data with, and accessed from, the store be able to navigate by dispatching actions have support for time travel debugging for route changes in the Redux devtools. All of this requires deeper integration. Please note you don’t need this deep integration: Route changes are unlikely to matter for time travel debugging. Rather than dispatching actions to navigate you can pass the history object provided to route components to your actions and navigate with it there. Routing data is already a prop of most of your components that care about it, whether it comes from the store or the router doesn’t change your component’s code. However, we know some people feel strongly about this and so we want to provide the best deep integration possible. As of version 4 of React Router, the React Router Redux package is a part of the project. Please refer to it for deep integration.",
+        "tags":["Deep integration"],
+        "url": "",
+        "state":"inactive"
+    },
+    {
+        "id": 16,
+        "date":1525966690068,
+        "title":"Dealing with Update Blocking",
+        "author":"Antoan Andonov",
+        "content":"React Router has a number of location-aware components that use the current location object to determine what they render. By default, the current location is passed implicitly to components using React’s context model. When the location changes, those components should re-render using the new location object from the context.React provides two approaches to optimize the rendering performance of applications: the shouldComponentUpdate lifecycle method and the PureComponent. Both block the re-rendering of components unless the right conditions are met. Unfortunately, this means that React Router’s location-aware components can become out of sync with the current location if their re-rendering was prevented.",
+        "tags":["Dealing with Update Blocking"],
+        "url": "",
+        "state":"inactive"
+    },
+    {
+        "id": 17,
+        "date":1525966698479,
+        "title":"BackButton",
+        "author":"Antoan Andonov",
+        "content":"Connects the global back button on Android and tvOS to the router’s history. On Android, when the initial location is reached, the default back behavior takes over. Just render one somewhere in your app.",
+        "tags":["BackButton"],
+        "url": "",
+        "state":"inactive"
+    },
+    {
+        "id": 18,
+        "date":1525966681901,
+        "title":"DeepLinking",
+        "author":"Antoan Andonov",
+        "content":"Connects your app’s deep linking to the router’s history. Just render one somewhere in your app. You will need to do some native app configuration for this to work. Please refer to the guide.",
+        "tags":["DeepLinking"],
+        "url": "",
+        "state":"inactive"
+    },
+    {
+        "id": 19,
+        "date":1525966459178,
+        "title":"TITLE",
+        "author":"Antoan Andonov",
+        "content":"CONTENT",
+        "tags":["TAG"],
+        "url": null,
+        "state":"active"
+    }
+  ]
+}

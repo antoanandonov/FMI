@@ -1,0 +1,82 @@
+.width{
+    width: 50em;
+}
+
+.height {
+    height: 50em;
+}
+
+.margin-left{
+    margin-left: 5px;
+}
+
+li, p, h1, h2, h3, h4, h5, h6{
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -o-user-select: text;
+    user-select: text;
+}
+  
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none !important;
+    /* color:#53D2F9; */
+}
+  
+a>h1, a>h2, a>h3, a>h4, a>h5, a>h6 a>p{
+    font-family: mononoki, monofur, American Typewriter, Garamond, Copperplate Gothic Light,  Jura;
+    cursor: pointer;
+    /* color:#53D2F9; */
+}
+
+.margin{
+    margin: 5em;
+}
+
+.padding{
+    padding: 5em;
+}
+
+.margin-top-bottom{
+      margin-bottom: 5em;
+      margin-top: 5em;
+}
+
+.padding-top-bottom{
+    padding-bottom: 1em;
+    padding-top: 1em;
+}
+
+.margin-left-right{
+    margin-left: 10em;
+    margin-right: 10em;
+}
+
+.padding-button{
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.padding-left{
+    padding-left: 5px;
+}
+
+.margin-top{
+    margin-top: 2em;
+}
+
+.padding-top{
+    padding-top: 2em;
+}
+
+.margin-bottom{
+    margin-bottom: 2em;
+}
+
+.padding-bottom{
+    padding-bottom: 2em;
+}
+
+.card-width{
+    width: 18rem;
+}

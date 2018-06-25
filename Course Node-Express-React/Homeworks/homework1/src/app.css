@@ -1,0 +1,72 @@
+.navbar-form, .navbar-form button {
+  display: inline-block;
+}
+
+.navbar-right {
+  float: right;
+  padding-right: 20px
+}
+
+li, p, h1, h2, h3, h4, h5, h6{
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -o-user-select: text;
+  user-select: text;
+}
+
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none !important;
+  color:#53D2F9;
+}
+
+a>h1, a>h2, a>h3, a>h4, a>h5, a>h6 a>p{
+  font-family: mononoki, monofur, American Typewriter, Garamond, Copperplate Gothic Light,  Jura;
+  cursor: pointer;
+  color:#53D2F9;
+}
+
+h1 {
+	font-size: 5em !important;
+	margin: 0 0 0.5em 0;
+}
+
+h2 {
+	font-size: 4em !important;
+	margin: 0 0 0.5em 0;
+}
+
+h3 {
+	font-size: 3em !important;
+	margin: 0 0 0.5em 0;
+}
+
+h4 {
+	font-size: 2.5em !important;
+	margin: 0 0 0.5em 0;
+}
+
+h5 {
+	font-size: 2em !important;
+	margin: 0 0 0.5em 0;
+}
+
+h6 {
+	font-size: 1.5em !important;
+	margin: 0 0 0.5em 0;
+}
+
+p, q, ul, li, a{
+	font-size: 1.1em !important;
+	margin: 0 0 0.5em 0;	
+}
+
+blockquote{
+	font-size: 0.75em !important;
+	margin: 0 0 0.5em 0;	
+}
+
+  q, p, h1, h2, h3, h4, h5, h6 {
+	font-family: mononoki, monofur, American Typewriter, Garamond, Copperplate Gothic Light,  Jura;
+	cursor: default ;
+}
