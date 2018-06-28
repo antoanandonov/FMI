@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {  Link , BrowserRouter, Route, Switch } from "react-router-dom";
 import EditProfile from './EditProfile'
 import Calculator from './Calculator'
-// import AddPet from './AddPet'
+import AddPet from './AddPet'
 import Pets from './Pets'
 
 export default class Profile extends Component {
@@ -41,7 +41,7 @@ export default class Profile extends Component {
                             <Link className="nav-link" to="/profile/pets"><h5>My Pets</h5></Link>
                         </li>
                         <li className="nav-item">
-                        <Link className="nav-link" to="/profile/calculate"><h5>Calculator</h5></Link>
+                            <Link className="nav-link" to="/profile/calculate"><h5>Calculator</h5></Link>
                         </li>
                         <li className="nav-item">
                             <button type="submit" className="btn btn-lg btn-outline-primary mb-2 float-right padding-button" onClick={this.onLogout}>Logout</button>
@@ -52,7 +52,7 @@ export default class Profile extends Component {
                         <Route path="/profile/edit" render={ () => (<EditProfile {...this.state} user={user} onEditProfile={onEditProfile}/>)}/>
                         <Route path="/profile/pets" render={ () => (<Pets {...this.state} loadPetsByUser={loadPetsByUser} pets={this.props.petsByUser} onEditPet={onEditPet} onDeletePet={onDeletePet} onAddPet={onAddPet} load='petsByUser'/>)}/>
                         <Route path="/profile/calculate" render={ () => (<Calculator {...this.state} />)}/>
-                        {/* <Route path="/pets/add" render={ () => (<AddPet {...this.state} onAddPet={this.onAddPet}/>)}/> */}
+                        <Route path="/pets/add" render={ () => (<AddPet {...this.state} onAddPet={onAddPet}/>)}/>
                     </Switch>
                     
                 </div>

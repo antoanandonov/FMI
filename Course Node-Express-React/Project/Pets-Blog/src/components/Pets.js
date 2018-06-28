@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { NavLink } from "react-router-dom";
 import Pet from './Pet'
-// import AddPet from './AddPet'
 import axios from 'axios';
 
 const KEY = 'a94b9a5c6d4843ad501987eb920fcc5f7bcc0ceaee5ca8a5a24938ced9e56c46';
@@ -104,7 +104,7 @@ export default class Pets extends Component {
         return (
             <div className="App margin-top-bottom">
                 <div className="margin container">
-                <button type="button" className="btn btn-lg btn-success mb-2 float-center padding-button" onClick={this.onAdd}>Add Pet</button>
+                    { this.props.load === 'petsByUser' ? <NavLink to="/pets/add" className="btn btn-lg btn-success mb-2 float-center padding-button">Add Pet</NavLink> : <div/> }
                     { 
                         pets.map(pet => {
                             return (<Pet key={pet.id} {...pet} onEditPet={onEditPet} onDeletePet={onDeletePet}/> );

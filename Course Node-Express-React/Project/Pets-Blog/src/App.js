@@ -46,6 +46,7 @@ class App extends Component {
     this.onLogout = this.onLogout.bind(this);
     this.onEditPet = this.onEditPet.bind(this);
     this.onDeletePet = this.onDeletePet.bind(this);
+    this.onDeletePost = this.onDeletePost.bind(this);
     this.onCreatePost = this.onCreatePost.bind(this);
     this.onEditProfile = this.onEditProfile.bind(this);
     this.onEditPost = this.onEditPost.bind(this);
@@ -57,10 +58,6 @@ class App extends Component {
     this.loadPetsByUser = this.loadPetsByUser.bind(this);
     this.loadProfile = this.loadProfile.bind(this);
     
-  }
-
-  componentWillMount(){
-    this.onLogin({ userNameOrEmail:"antoan.andonov", password:"admin"});
   }
 
   getPets(){
@@ -159,9 +156,10 @@ class App extends Component {
   }
   
   onAddPet = (pet) => {
-    axios.put(`${host}/api/pets/add`, pet)
+    pet.userName = this.state.user.userName;
+    axios.post(`${host}/api/pets/`, pet)
     .then(() => {
-      const pets = this.getPets();
+      var pets = this.getPets();
       pets.push(pet);
       this.setState({pets: pets});
     } )
@@ -176,12 +174,13 @@ class App extends Component {
       post.userName = this.state.user.userName;
       axios.put(`${host}/api/posts/${post.id}`, post)
       .then(() => {
-        const posts = this.getPosts();
+        var posts = this.getPosts();
         const index = posts.findIndex(p => p.id === post.id);
         posts[index] = post;
         this.setState({posts: posts});
       } )
       .catch(err => {
+        console.log(err);
         this.setState({ hasError: true });
         this.setState({ error: err.response });
       })
@@ -190,9 +189,9 @@ class App extends Component {
 
   onEditPet = (pet) => {
     if(this.state.isLoggedIn){
-      axios.post(`${host}/api/pets/${pet.id}`, pet)
+      axios.put(`${host}/api/pets/${pet.id}`, pet)
       .then(() => {
-        const pets = this.getPets();
+        var pets = this.getPets();
         const index = pets.findIndex(p => p.id === pet.id);
         pets[index] = pet;
         this.setState({pets: pets});
@@ -209,7 +208,7 @@ class App extends Component {
       axios.delete(`${host}/api/pets/${petId}`)
       .then(({ data: pet }) => {
         console.log(pet);
-        const pets = this.getPets();
+        var pets = this.getPets();
         const index = pets.findIndex(p => p.id === petId);
         pets.splice(index, 1);
         this.setState({pets: pets});
@@ -222,7 +221,7 @@ class App extends Component {
       axios.delete(`${host}/api/posts/${postId}`)
       .then(({ data: post }) => {
         console.log(post);
-        const posts = this.getPets();
+        var posts = this.getPets();
         const index = posts.findIndex(p => p.id === postId);
         posts.splice(index, 1);
         this.setState({posts: posts});
@@ -244,9 +243,9 @@ class App extends Component {
   onCreatePost = (post) => {
     if(this.state.isLoggedIn){
       post.userName = this.state.user.userName;
-      axios.post(`${host}/api/posts/add`, post)
+      axios.post(`${host}/api/posts`, post)
       .then(() => {
-        // const editedPosts = this.getPosts();
+        // var editedPosts = this.getPosts();
         // editedPosts.put(post);
         // this.setState({posts: editedPosts})
       })

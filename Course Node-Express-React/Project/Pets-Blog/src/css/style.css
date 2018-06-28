@@ -6,6 +6,10 @@
     height: 50em;
 }
 
+.minHeight {
+    height: 25em;
+}
+
 .margin-left{
     margin-left: 5px;
 }
@@ -80,3 +84,12 @@ a>h1, a>h2, a>h3, a>h4, a>h5, a>h6 a>p{
 .card-width{
     width: 18rem;
 }
+
+pre {
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-break: normal;
+    /* word-wrap: break-word;       Internet Explorer 5.5+ */
+  }

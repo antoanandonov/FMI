@@ -45,8 +45,10 @@ export default class Pets extends Component {
                 'Content-Type': 'application/json; application/x-www-form-urlencoded; charset=UTF-8'
             }
         }).then( ({ data: d }) => {
-            const url = d.results[0].urls.full;
-            this.setState({ image: url });
+            if(d.results[0]){
+                const url = d.results[0].urls.full;
+                this.setState({ image: url });
+            }
         })
         .catch(err => {
             console.log(err);
@@ -58,7 +60,11 @@ export default class Pets extends Component {
 
         axios.get(`${url3}` + breed.replace(/\s/g, "%20").trim(),  cors(),{
         }).then( ({data:d} ) => {
-            this.setState({ search: d });
+            if(d){
+                this.setState({ search: d });
+            }else{
+                this.setState({ search: "" });
+            }
         })
         .catch(err => {
             console.log(err);
@@ -70,12 +76,14 @@ export default class Pets extends Component {
 
         axios.get(`${url7}` + breed.replace(/\s/g, "%20").trim(),  cors(),{
         }).then( ({data:d} ) => {
-            this.setState({ moreInfo: d.pages });
-            this.setState({ article1: d.pages[0] });
-            this.setState({ article2: d.pages[1] });
-            this.setState({ article3: d.pages[2] });
-            this.setState({ article4: d.pages[3] });
-            this.setState({ article5: d.pages[4] });
+            if(d){
+                this.setState({ moreInfo: d.pages });
+                this.setState({ article1: d.pages[0] });
+                this.setState({ article2: d.pages[1] });
+                this.setState({ article3: d.pages[2] });
+                this.setState({ article4: d.pages[3] });
+                this.setState({ article5: d.pages[4] });
+            }
         })
         .catch(err => {
             console.log(err);
@@ -95,15 +103,16 @@ export default class Pets extends Component {
         evt.preventDefault();
         const { onCreatePost } = this.props;
         const title = this.state.search.displaytitle;
-        const c = this.state.search.extract;
+        const description = this.state.search.extract;
         const a1 = this.state.article1;
         const a2 = this.state.article2;
         const a3 = this.state.article3;
         const a4 = this.state.article4;
         const a5 = this.state.article5;
 
-        const content = title + "\n" + c + "\n\n" + a1.displaytitle + "\n" + a1.extract + "\n\n" + a2.displaytitle + "\n" + a2.extract + "\n\n" + a3.displaytitle + "\n" + a3.extract + "\n\n" + a4.displaytitle + "\n" + a4.extract + "\n\n" + a5.displaytitle + "\n" + a5.extract;
-        const post = { title: title, description: content }
+        // const content = title + ". " + description + " " + a1.displaytitle + ". " + a1.extract + " " + a2.displaytitle + ". " + a2.extract + " " + a3.displaytitle + ". " + a3.extract + " " + a4.displaytitle + ". " + a4.extract + " " + a5.displaytitle + ". " + a5.extract;
+        const content = title + "\n" + description + "\n\n" + a1.displaytitle + "\n" + a1.extract + "\n\n" + a2.displaytitle + "\n" + a2.extract + "\n\n" + a3.displaytitle + "\n" + a3.extract + "\n\n" + a4.displaytitle + "\n" + a4.extract + "\n\n" + a5.displaytitle + "\n" + a5.extract;
+        const post = { title: title, description: content, avatar: this.state.image }
         
         onCreatePost(post);
     }

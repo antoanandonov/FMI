@@ -5,7 +5,8 @@ const mysql = require('mysql');
 // import axios from 'axios';
 const axios = require('axios');
 
-const data = require("../resources/blogs.json");
+// const data = require("../resources/blogs.json");
+
 const internalServerErrorMessage = "The server encountered an unexpected condition which prevented it from fulfilling the request!";
 
 const pool = mysql.createPool({
@@ -55,8 +56,9 @@ userValidation = (obj) => {
 postValidation = (obj) => {
     const schema = {
         title: Joi.string().min(5).required(),
-        description: Joi.string().min(10).required(),
-        userName: Joi.string().min(3).required()
+        description: Joi.required(),
+        userName: Joi.string().min(3).required(),
+        avatar: Joi.required()
     }
     return  Joi.validate(obj, schema);
 }
@@ -105,12 +107,12 @@ router.post('/api/signin', (req, res) =>{
 });
 
 router.get('/api/pets', (req, res) =>{
-    const query = "SELECT id, name, breed, description FROM pets";
+    const query = "SELECT id, breed, description, avatar FROM pets";
     // const query = "SELECT id, firstName, lastName, userName, email, isAdmin, AES_DECRYPT(password, 'secret') AS ENCRYPTED FROM users";
 
     try{
         getConnection().query(query, (err, rows) =>{
-            if(err) { res.status(500).send(internalServerErrorMessage); return; }
+            if(err) { console.log(err); res.status(500).send(internalServerErrorMessage); return; }
             // if(rows.length === 0) { res.status(204).send("Empty"); return; }
             console.log(rows);
             res.status(200).json(rows);
@@ -173,7 +175,7 @@ console.log(id)
 });
 
 router.get('/api/:userName/pets', (req, res) =>{
-    const query = "SELECT id, name, breed, description FROM pets WHERE userName = ?";
+    const query = "SELECT id, breed, description, avatar FROM pets WHERE userName = ?";
     // const query = "SELECT id, firstName, lastName, userName, email, isAdmin, AES_DECRYPT(password, 'secret') AS ENCRYPTED FROM users";
 
     try{
@@ -204,13 +206,12 @@ router.get('/api/profile/:userName/', (req, res) =>{
 });
 
 router.put('/api/pets/:petId/', (req, res) =>{
-    const query = "UPDATE pets SET name = ?, breed = ?, description = ? WHERE id = ?";
+    const query = "UPDATE pets SET breed = ?, description = ? WHERE id = ?";
     const petId = req.params.petId;
-    const name = req.body.name;
     const breed = req.body.breed;
     const description = req.body.description;
     try{
-        getConnection().query(query, [name, breed, description, petId], (err, rows) =>{
+        getConnection().query(query, [breed, description, petId], (err, rows) =>{
             if(err) { console.log(err); res.status(500).send(internalServerErrorMessage); return; }
             // if(rows.length === 0) { res.status(204).send("Empty"); return; }
             console.log(rows);
@@ -240,8 +241,8 @@ router.put('/api/posts/:postId/', (req, res) =>{
 
 router.delete('/api/posts/:postId', (req, res) =>{
     const query = "DELETE FROM posts WHERE id = ?";
-    const postId = req.params.petId;
-    console.log(petId)
+    const postId = req.params.postId;
+    console.log(postId)
     try{
         getConnection().query(query, [postId], (err, rows) =>{
             if(err) { console.log(err); res.status(500).send(internalServerErrorMessage); return; }
@@ -270,13 +271,14 @@ router.delete('/api/pets/:petId', (req, res) =>{
     }
 });
 
-router.post('/api/pets/add', (req, res) =>{
-    const query = "INSERT INTO pets (breed, description) VALUES (?, ?)";
+router.post('/api/pets', (req, res) =>{
+    const query = "INSERT INTO pets (breed, description, userName) VALUES (?, ?, ?)";
     const breed = req.body.breed;
     const description = req.body.description;
+    const userName = req.body.userName;
 
     try{
-        getConnection().query(query, [breed, description], (err, rows) =>{
+        getConnection().query(query, [breed, description, userName], (err, rows) =>{
             if(err) { console.log(err); res.status(500).send(internalServerErrorMessage); return; }
             // if(rows.length === 0) { res.status(204).send("Empty"); return; }
             console.log(rows);
@@ -287,17 +289,18 @@ router.post('/api/pets/add', (req, res) =>{
     }
 });
 
-router.post('/api/posts/add', (req, res) =>{
+router.post('/api/posts', (req, res) =>{
     const { error } = postValidation(req.body);
     if(error) { return res.status(400).send(error.details[0].message); }
 
-    const query = "INSERT INTO posts (title, description, userNameFK) VALUES (?, ?, ?)";
+    const query = "INSERT INTO posts (title, description, userNameFK, avatar) VALUES (?, ?, ?, ?)";
     const title = req.body.title;
     const description = req.body.description;
     const userName = req.body.userName;
+    const avatar = req.body.avatar;
 
     try{
-        getConnection().query(query, [title, description, userName], (err, rows) =>{
+        getConnection().query(query, [title, description, userName, avatar], (err, rows) =>{
             if(err) { console.log(err); res.status(500).send(internalServerErrorMessage); return; }
             // if(rows.length === 0) { res.status(204).send("Empty"); return; }
             console.log(rows);
